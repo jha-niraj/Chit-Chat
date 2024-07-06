@@ -17,7 +17,6 @@ const UserAuthentication = ({ endpoint }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
 			const response = await axios.post("http://localhost:3001/api/v1/" + endpoint, {
 				fullname,
@@ -30,7 +29,7 @@ const UserAuthentication = ({ endpoint }) => {
                     navigate("/signin");
                 }, 2000)
             } else {
-                localStorage.setItem("token", response.data.token);
+                sessionStorage.setItem("user", JSON.stringify(response.data));
                 setTimeout(() => {
                     navigate("/homepage");
                 }, 2000)
@@ -88,7 +87,7 @@ const UserAuthentication = ({ endpoint }) => {
                         placeholder="********"
                         onChange={(e) => setPassword(e.target.value)} 
                     />
-                    <Button label="Submit" />
+                    <Button label={endpoint == "signup" ? "Sign Up" : "Sign In"} />
                     <div className="flex items-center justify-center gap-2">
                         <hr className="w-full h-1 bg-gray-300" />
                         Or

@@ -89,6 +89,7 @@ router.post("/signin", async (req, res) => {
                     const token = jwt.sign({ email }, jwt_secret);
                     res.status(200).json({
                         msg: 'User Authentication Successfull',
+                        fullname: user.fullname,
                         token: token
                     })
                 }

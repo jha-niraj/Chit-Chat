@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, createContext, useEffect } from 'react';
 import { Routes, Route } from "react-router-dom";
 
 // Importing necessary components and pages from the internal directory:
@@ -7,15 +7,25 @@ import UserAuthentication from './pages/UserAuthentication';
 import EntryPage from "./pages/EntryPage";
 import HomePage from "./pages/HomePage";
 
+export const UserContext = createContext({});
+
 function App() {
+	const [ user, setUser ] = useState({});
+
+	useEffect(() => {
+		let userInSession = sessionStorage.getItem("user");
+		userInSession ? setUser(JSON.parse(userInSession)) : setUser(null);
+	}, [])
 
 	return (
+		<UserContext.Provider value={{user, setUser}}>
 		<Routes>
 			<Route path="/" element={<EntryPage />} />
 			<Route path="/signup" element={<UserAuthentication endpoint="signup" />} />
 			<Route path="/signin" element={<UserAuthentication endpoint="signin" />} />
 			<Route path="/homepage" element={<HomePage />} />
 		</Routes>
+		</UserContext.Provider>
 	)
 }
 

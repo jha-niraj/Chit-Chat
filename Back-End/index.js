@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
+const { chats } = require("./dummyData/data");
+
 const app = express();
 const port = 3001;
 
