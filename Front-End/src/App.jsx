@@ -6,6 +6,7 @@ import InputBox from './components/InputBox';
 import UserAuthentication from './pages/UserAuthentication';
 import EntryPage from "./pages/EntryPage";
 import HomePage from "./pages/HomePage";
+import ChatPage from './pages/ChatPage';
 
 export const UserContext = createContext({});
 
@@ -24,6 +25,7 @@ function App() {
 			<Route path="/signup" element={<UserAuthentication endpoint="signup" />} />
 			<Route path="/signin" element={<UserAuthentication endpoint="signin" />} />
 			<Route path="/homepage" element={<HomePage />} />
+			<Route path="/chats" element={<ChatPage />} />
 		</Routes>
 		</UserContext.Provider>
 	)

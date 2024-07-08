@@ -15,14 +15,17 @@ const UserAuthentication = ({ endpoint }) => {
 
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         try {
-			const response = await axios.post("http://localhost:3001/api/v1/" + endpoint, {
+			const response = await axios.post("http://localhost:4001/api/v1/" + endpoint, {
 				fullname,
 				email,
 				password
-			})
+			}, {
+                withCredentials: true
+            })
+            console.log("Hii")
 			toast.success(response.data.msg);
             if(endpoint == "signup") {
                 setTimeout(() => {
@@ -31,7 +34,7 @@ const UserAuthentication = ({ endpoint }) => {
             } else {
                 sessionStorage.setItem("user", JSON.stringify(response.data));
                 setTimeout(() => {
-                    navigate("/homepage");
+                    navigate("/chats");
                 }, 2000)
             }
 		} catch(err) {
@@ -50,6 +53,11 @@ const UserAuthentication = ({ endpoint }) => {
     //     return () => clearTimeout(timerId);
     // }, [inputValue])
 
+    const handleGuestUser = () => {
+        setEmail("guestuser@gmail.com");
+        setPassword("guestuser123");
+    }
+
     return (
         <PageAnimation keyValue={ endpoint }>
             <Toaster />
@@ -64,6 +72,7 @@ const UserAuthentication = ({ endpoint }) => {
                         endpoint == "signup" ? <InputBox 
                                                     label="Full Name"
                                                     name="fullname"
+                                                    value={fullname}
                                                     type="text"
                                                     id="fullname"
                                                     placeholder="Niraj Jha"
@@ -73,7 +82,8 @@ const UserAuthentication = ({ endpoint }) => {
                     }
                     <InputBox 
                         label="Email"
-                        name="email" 
+                        name="email"
+                        value={email} 
                         type="email" 
                         id="email" 
                         placeholder="flamingocool2@gmail.com" 
@@ -82,12 +92,13 @@ const UserAuthentication = ({ endpoint }) => {
                     <InputBox 
                         label="Password" 
                         name="password" 
+                        value={password}
                         type="password" 
                         id="password" 
                         placeholder="********"
                         onChange={(e) => setPassword(e.target.value)} 
                     />
-                    <Button label={endpoint == "signup" ? "Sign Up" : "Sign In"} />
+                    <Button type="submit" label={endpoint == "signup" ? "Sign Up" : "Sign In"} />
                     <div className="flex items-center justify-center gap-2">
                         <hr className="w-full h-1 bg-gray-300" />
                         Or
@@ -99,6 +110,13 @@ const UserAuthentication = ({ endpoint }) => {
                         }
                     </div>
                 </form>
+                
+                {
+                    endpoint == "signin" ? 
+                            <button onClick={handleGuestUser} className="w-[50%] bg-gray-300 hover:bg-black hover:text-white rounded-lg h-10 text-xl font-semibold transition-all">Get Guset User Credentials</button>
+                        :
+                            ""
+                }
             </section>
         </PageAnimation>
     )
