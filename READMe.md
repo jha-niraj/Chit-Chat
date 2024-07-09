@@ -38,10 +38,6 @@ To run this application locally, follow these steps:
 
 Contributions are welcome! Feel free to submit bug reports, feature requests, or pull requests.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ## Contact
 
 If you have any questions or suggestions, feel free to contact us at [jhaniraj45@gmail.com].
