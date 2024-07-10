@@ -1,6 +1,6 @@
 # Chat Application
 
-Simple Chat Application that allows users to communicate with each other in real-time. It provides a platform for instant messaging between users who are connected to the application.
+Chat Application that allows users to communicate with each other in real-time. It provides a platform for instant messaging between users who are connected to the application.
 
 ## Features
 
