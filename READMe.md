@@ -1,6 +1,6 @@
 # Chat Application
 
-Simple Chat Application that allows users to communicate with each other in real-time. It provides a platform for instant messaging between users who are connected to the application.
+Chat Application that allows users to communicate with each other in real-time. It provides a platform for instant messaging between users who are connected to the application.
 
 ## Features
 
@@ -38,10 +38,6 @@ To run this application locally, follow these steps:
 ## Contributing
 
 Contributions are welcome! Feel free to submit bug reports, feature requests, or pull requests.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
