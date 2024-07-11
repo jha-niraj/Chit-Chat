@@ -6,6 +6,7 @@ Simple Chat Application that allows users to communicate with each other in real
 
 - **Real-time Communication:** Users can send and receive messages instantly.
 - **User Authentication:** Secure user authentication system to ensure only authorized users can access the chat.
+- **One-One Chat:** User are able to chat on one on one get notified instantly
 - **Multiple Chat Rooms:** Users can create or join different chat rooms based on their interests or topics.
 - **Emoji Support:** Users can express themselves using emojis in their messages.
 - **File Sharing:** Support for sharing files such as images, documents, etc.
